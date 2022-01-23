@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <ul>
+        {% for tab in tabs %}
+        <li>
+            {% if tab.image %}
+                <img width=16 src="{{ tab.image }}" />
+            {% endif %}
+            <a href="{{ tab.url }}">{{ tab.title }}
+                {% if tab.thumbnail %}
+                    <br />
+                    <img style="display:block; max-width: 40rem;" src="{{ tab.thumbnail }}" />
+                {% endif %}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

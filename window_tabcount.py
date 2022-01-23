@@ -1,5 +1,4 @@
-from lib import readMozLZ4, writeMozLZ4
-from furl import furl
+from lib import readMozLZ4
 
 
 if __name__ == "__main__":

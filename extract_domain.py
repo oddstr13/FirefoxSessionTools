@@ -1,9 +1,11 @@
 import os
-from typing import Dict, Optional
-from lib import getActiveTab, normalizeHost, readMozLZ4, writeMozLZ4
-from furl import furl
+from typing import Dict
 import sys
+
 import jinja2
+from furl import furl
+
+from lib import getActiveTab, normalizeHost, readMozLZ4, writeMozLZ4
 
 
 def tabFilter(tab: dict) -> dict:

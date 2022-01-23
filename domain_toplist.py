@@ -1,6 +1,6 @@
 from typing import Dict, Optional
-from lib import normalizeHost, readMozLZ4, writeMozLZ4
-from furl import furl
+
+from lib import normalizeHost, readMozLZ4
 
 
 if __name__ == "__main__":

@@ -1,4 +1,3 @@
-from enum import unique
 import sys
 
 from lib import readMozLZ4, writeMozLZ4

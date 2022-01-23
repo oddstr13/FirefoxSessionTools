@@ -1,3 +1,4 @@
+import json
 import os
 from typing import Dict
 import sys
@@ -58,15 +59,21 @@ if __name__ == "__main__":
 
     os.makedirs("extracted", exist_ok=True)
     for host in extracted_tabs.keys():
-        fn = f"extracted/{host}.html"
+        html_file = f"extracted/{host}.html"
+        json_file = f"extracted/{host}.json"
+
         tablist = extracted_tabs.get(host)
 
         filtered = [tabFilter(tab) for tab in tablist]
-        print(filtered[0])
 
         tstream = template.stream(tabs=filtered)
 
-        with open(fn, "w") as fh:
+        with open(html_file, "w") as fh:
             tstream.dump(fh)
+        
+        url_title_list = list(map(lambda x: dict(url=x.get('url'), title=x.get('title')), filtered))
+        with open(json_file, "w") as fh:
+            json.dump(url_title_list, fh, indent=2)
+
 
     writeMozLZ4("output.jsonlz4", sessionstore)

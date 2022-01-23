@@ -12,9 +12,9 @@
     <ul>
         {% for tab in tabs %}
         <li>
-            {% if tab.image %}
+            {#% if tab.image %}
                 <img width=16 src="{{ tab.image }}" />
-            {% endif %}
+            {% endif %#}
             <a href="{{ tab.url }}">{{ tab.title }}
                 {% if tab.thumbnail %}
                     <br />

@@ -12,10 +12,16 @@ if __name__ == "__main__":
     for win in sessionstore.get("windows", []):
         for tab in win.get("tabs", []):
             tabs += 1
-            index = tab.get("index", 1) - 1
-            entry = tab.get("entries")[index]
 
-            host = normalizeHost(entry.get("url"))
+            entries = tab.get("entries")
+
+            if entries:
+                index = tab.get("index", 1) - 1
+                entry = tab.get("entries")[index]
+                host = normalizeHost(entry.get("url"))
+            else:
+                host = normalizeHost(tab.get("userTypedValue"))
+
 
             domains[host] = domains.get(host, 0) + 1
 

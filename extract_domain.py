@@ -2,6 +2,7 @@ import json
 import os
 from typing import Dict
 import sys
+import time
 
 import jinja2
 from furl import furl
@@ -26,6 +27,7 @@ def tabFilter(tab: dict) -> dict:
 
 
 if __name__ == "__main__":
+    timestamp = time.strftime("%Y-%m-%d", time.gmtime())
     to_extract = [normalizeHost(x) for x in sys.argv[1:]]
     domains: Dict[str, int] = {}
     tabs = 0
@@ -57,10 +59,10 @@ if __name__ == "__main__":
         open("extract_domain_template.jinja2").read()
     )
 
-    os.makedirs("extracted", exist_ok=True)
+    os.makedirs(f"extracted/{timestamp}", exist_ok=True)
     for host in extracted_tabs.keys():
-        html_file = f"extracted/{host}.html"
-        json_file = f"extracted/{host}.json"
+        html_file = f"extracted/{timestamp}/{host}.html"
+        json_file = f"extracted/{timestamp}/{host}.json"
 
         tablist = extracted_tabs.get(host)
 

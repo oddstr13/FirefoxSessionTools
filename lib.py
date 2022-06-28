@@ -49,8 +49,11 @@ def normalizeHost(url: Optional[str]) -> Optional[str]:
 
 
 def getActiveTab(tab) -> dict:
+    entries = tab.get("entries")
+    if not entries:
+        return {}
     index = tab.get("index", 1) - 1
-    return tab.get("entries")[index]
+    return entries[index]
 
 
 if __name__ == "__main__":

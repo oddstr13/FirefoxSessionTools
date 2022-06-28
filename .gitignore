@@ -1,5 +1,6 @@
 
 extracted/
 *.jsonlz4
+*.jsonlz4~*
 
 *.py[ocd]

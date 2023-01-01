@@ -48,6 +48,13 @@ def normalizeHost(url: Optional[str]) -> Optional[str]:
     return host
 
 
+def getUrlPath(url: Optional[str]) -> Optional[str]:
+    if url is None:
+        return None
+    path = furl(url).path
+    return str(path) if path else None
+
+
 def getActiveTab(tab) -> dict:
     entries = tab.get("entries")
     if not entries:
